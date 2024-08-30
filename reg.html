@@ -1,128 +1,121 @@
-<!DOCTYPE html>
+<!DOCTYPE>
+<!NOTE^-caret ^ It Is Used To Know The Pattern That It Should Be Right
+And []-Square Brackets Means Should Not Match The Inside Characters
+^HiHello Should Start With HiHello Only Caret>
 <html>
 <head>
-  <title>User Registration Form</title>
-   <link rel="stylesheet" href="/exp_1/styles.css"> 
+<title>New Registration Form</title>
+<style>
+body{
+font-family: Arial,sans-serif;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background-color:#f8f9fa;
+}
+.form-container{
+background-color:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:350px;
+}
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#333;
+}
+.input-box
+{
+margin-bottom:15px;
+}
+.input-box input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+box-sizing:border-box;
+outline:none;
+transition:border-color 0.3s ease;
+}
+.input-box input:focus
+{
+border-color:#007bff;
+}
+.input-box label
+{
+display:block;
+margin-bottom:5px;
+color:#555;
+}
+.submit-btn
+{
+width:100%;
+padding:10px;
+background-color:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+transition:background-color 0.3s ease;
+}
+.submit-btn:hover
+{
+background-color:#0056b3;
+}
+.success-msg
+{
+display:none;
+text-align:center;
+color:green;
+margin-top:15px;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h2>User Registration Form</h2>
-    <form>
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" required>
-      </div>
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-      </div>
-      <div class="form-group">
-        <label>Account Type:</label>
-        <label>
-          <input type="radio" name="accountType" value="personal" checked> Personal
-        </label>
-        <label>
-          <input type="radio" name="accountType" value="business"> Business
-        </label>
-      </div>
-      <div class="form-group">
-        <label>Profile Picture:</label>
-        <label class="upload-button">
-          Upload
-          <input type="file" style="display:none;">
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="terms-checkbox">
-          <input type="checkbox" id="termsCheckbox">
-          I agree to the <a href="https://youtu.be/dQw4w9WgXcQ">terms and conditions</a>
-        </label>
-      </div>
-      <div class="form-group">
-        <a href="https://youtu.be/dQw4w9WgXcQ" class="submit-button">Submit</a>
-      </div>
-    </form>
-  </div>
+<div class="form-container">
+<form id="regForm">
+<h1>Event Registration</h1>
+<div class="input-box">
+<label for="firstName">First Name</label>
+<input type="text" id="firstName" name="firstName" required>
+</div>
+<div class="input-box">
+<label for="lastName">Last Name</label>
+<input type="text" id="lastName" name="lastName" required>
+</div>
+<div class="input-box">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" required>
+</div>
+<div class="input-box">
+<label for="phNo">Phone Number</label>
+<input type="text" id="phNo" name="phNo" pattern="\d{10}" title="Phone
+No Must Be 10 Digits Only" required>
+</div>
+<div class="input-box">
+<label for="alphNo">Alternate Phone Number</label>
+<input type="text" id="phNo" name="phNo" pattern="\d{10}" title="Phone
+No Must Be 10 Digits Only" required>
+</div>
+
+<button type="submit" class="submit-btn"> Register</button>
+<div class="success-msg" id="successmsg">
+Thank You For Registering :)
+</div>
+</form>
+</div>
+<script>
+const form=document.getElementById('regForm');
+const successmsg=document.getElementById('successmsg');
+form.addEventListener('submit',function(event){
+event.preventDefault();
+successmsg.style.display='block';
+form.reset();
+});
+</script>
+
 </body>
 </html>
-CSS:
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e8f2eb;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #020302;
-  }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #020302;
-  }
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-  }
-  .form-group input[type="file"] {
-    margin-top: 5px;
-  }
-  .form-group .upload-button {
-    display: inline-block;
-    background-color: #477280;
-    color: #fff;
-    padding: 8px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .form-group .upload-button:hover {
-    background-color: #478051;
-  }
-  .form-group .file-name {
-    margin-top: 5px;
-  }
-  .form-group .terms-checkbox {
-    margin-top: 10px;
-  }
-  .form-group .submit-button {
-    width: 100%;
-    padding: 13px;
-    background-color: #477280;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .form-group .submit-button:hover {
-    background-color: #478051;
-  }
